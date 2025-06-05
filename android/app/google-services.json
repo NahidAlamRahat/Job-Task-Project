@@ -1,0 +1,90 @@
+{
+  "project_info": {
+    "project_number": "25562651801",
+    "project_id": "job-task-project-46da6",
+    "storage_bucket": "job-task-project-46da6.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25562651801:android:a1c7e08558f96ccc672c08",
+        "android_client_info": {
+          "package_name": "com.example.job_task"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25562651801-ol0i19dsut8davv6a1qho0lej8gec52c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6uEuFdHfPnROJeso8A-PsTZPAjsVMcaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25562651801-ol0i19dsut8davv6a1qho0lej8gec52c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "25562651801-oba2sloi5iiv2hbbpiesf7d3aludujus.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jobTaskProject"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:25562651801:android:43ab1740660342bc672c08",
+        "android_client_info": {
+          "package_name": "com.example.job_task_project"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "25562651801-dvjkff2e5l0bobfeaeaokqpcif7iv105.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.job_task_project",
+            "certificate_hash": "9cf58cb20e6dfd8c17197925cf3768891f39fcb8"
+          }
+        },
+        {
+          "client_id": "25562651801-ol0i19dsut8davv6a1qho0lej8gec52c.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD6uEuFdHfPnROJeso8A-PsTZPAjsVMcaU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "25562651801-ol0i19dsut8davv6a1qho0lej8gec52c.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "25562651801-oba2sloi5iiv2hbbpiesf7d3aludujus.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.jobTaskProject"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
