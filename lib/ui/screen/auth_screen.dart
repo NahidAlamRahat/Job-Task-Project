@@ -1,4 +1,3 @@
-
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -8,13 +7,15 @@ import 'login_screen.dart';
 
 class UserController {
 
- static var userData=FirebaseAuth.instance.currentUser;
+  static var userData = FirebaseAuth.instance.currentUser;
 
 
-  static Future<dynamic> loginWithGoogle({required BuildContext context}) async {
+  static Future<dynamic> loginWithGoogle(
+      {required BuildContext context}) async {
     try {
       final GoogleSignInAccount? googleUser = await GoogleSignIn().signIn();
-      final GoogleSignInAuthentication? googleAuth = await googleUser?.authentication;
+      final GoogleSignInAuthentication? googleAuth = await googleUser
+          ?.authentication;
 
       final credential = GoogleAuthProvider.credential(
         accessToken: googleAuth?.accessToken,
@@ -23,7 +24,8 @@ class UserController {
 
       debugPrint('token => ${googleAuth?.accessToken}');
 
-      var userCredential =await  FirebaseAuth.instance.signInWithCredential(credential);
+      var userCredential = await FirebaseAuth.instance.signInWithCredential(
+          credential);
 
       // Save user
       UserController.userData = userCredential.user;
@@ -39,8 +41,8 @@ class UserController {
         debugPrint('User is null!');
       }
 
-      Navigator.pushNamedAndRemoveUntil(context, HomeScreen.name, (route) => false);
-
+      Navigator.pushNamedAndRemoveUntil(
+          context, HomeScreen.name, (route) => false);
     } catch (e) {
       debugPrint('Google Sign-In error: $e');
     }
@@ -48,16 +50,14 @@ class UserController {
   }
 
 
- static Future<void> signOut({required BuildContext context}) async {
+  static Future<void> signOut({required BuildContext context}) async {
     await FirebaseAuth.instance.signOut();
     await GoogleSignIn().signOut();
     userData = null;
 
-    Navigator.pushNamedAndRemoveUntil(context, SignInScreen.name, (route) => true,);
+    Navigator.pushNamedAndRemoveUntil(
+      context, SignInScreen.name, (route) => true,);
   }
-
-
-
 
 
 }

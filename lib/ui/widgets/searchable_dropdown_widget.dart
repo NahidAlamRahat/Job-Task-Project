@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
- SearchableDropdown({
+SearchableDropdown({
   required String label,
   required String? value,
   required List<String> items,
@@ -18,12 +18,10 @@ import 'package:flutter/material.dart';
       });
     },
     onSelected: onChanged,
-    fieldViewBuilder: (
-        context,
+    fieldViewBuilder: (context,
         textEditingController,
         focusNode,
-        onFieldSubmitted,
-        ) {
+        onFieldSubmitted,) {
       return TextField(
         controller: textEditingController,
         focusNode: focusNode,

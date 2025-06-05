@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Future<void> showCustomAlertDialog(
-    BuildContext context, {
-      required Widget text,
-      required String message,
-      required VoidCallback onConfirm,
-      VoidCallback? onCancel,
-    }) {
+Future<void> showCustomAlertDialog(BuildContext context, {
+  required Widget text,
+  required String message,
+  required VoidCallback onConfirm,
+  VoidCallback? onCancel,
+}) {
   return showDialog(
     context: context,
     builder: (BuildContext context) {

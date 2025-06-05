@@ -40,7 +40,8 @@ class DrawerMenu extends StatelessWidget {
             shadowColor: Color(0xFFFEFFA7),
             child: ListTile(
               trailing: Icon(Icons.logout_outlined, color: Colors.black),
-              title: Center(child: Text('LogOut', style: TextStyle(color: Colors.black))),
+              title: Center(
+                  child: Text('LogOut', style: TextStyle(color: Colors.black))),
               onTap: () {
                 showCustomAlertDialog(
                   context,

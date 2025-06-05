@@ -5,7 +5,7 @@ import 'auth_screen.dart';
 class SignInScreen extends StatefulWidget {
   static const String name = '/';
 
-   SignInScreen({super.key});
+  SignInScreen({super.key});
 
   @override
   State<SignInScreen> createState() => _SignInScreenState();
@@ -18,12 +18,14 @@ class _SignInScreenState extends State<SignInScreen> {
   final TextEditingController _passwordTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
-   final bool _isGoogleLoading = false;
+  final bool _isGoogleLoading = false;
 
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
+    final size = MediaQuery
+        .of(context)
+        .size;
     return Scaffold(
       body: SafeArea(
         child: SingleChildScrollView(
@@ -75,7 +77,10 @@ class _SignInScreenState extends State<SignInScreen> {
               border: OutlineInputBorder(),
               prefixIcon: Icon(Icons.email),
             ),
-            validator: (value) => value?.isEmpty ?? true ? 'Enter valid email' : null,
+            validator: (value) =>
+            value?.isEmpty ?? true
+                ? 'Enter valid email'
+                : null,
             keyboardType: TextInputType.emailAddress,
           ),
           SizedBox(height: 15),
@@ -120,8 +125,7 @@ class _SignInScreenState extends State<SignInScreen> {
 
     setState(() => _isLoading = true);
 
-    try {
-    } catch (e) {
+    try {} catch (e) {
       if (mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Sign in failed: ${e.toString()}')),
@@ -134,10 +138,9 @@ class _SignInScreenState extends State<SignInScreen> {
 
   Widget _buildGoogleSignInButton(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: ()  {
+      onPressed: () {
         UserController.loginWithGoogle(context: context);
         setState(() {});
-
       },
 
       icon: _isGoogleLoading

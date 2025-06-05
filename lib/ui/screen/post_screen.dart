@@ -13,7 +13,6 @@ import 'package:dio/dio.dart';
 import 'package:path/path.dart' as path;
 
 
-
 class PostScreen extends StatefulWidget {
   final String? departureCode;
   final String? arrivalCode;
@@ -52,7 +51,8 @@ class _PostScreenState extends State<PostScreen> {
     return SingleChildScrollView(
       child: Center(
         child: Card(
-          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+          shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(16)),
           margin: const EdgeInsets.all(16),
           elevation: 4,
           child: Padding(
@@ -81,14 +81,6 @@ class _PostScreenState extends State<PostScreen> {
   }
 
 
-
-
-
-
-
-
-
-
   Widget _buildUserHeader() {
     return Row(
       children: [
@@ -108,7 +100,8 @@ class _PostScreenState extends State<PostScreen> {
 
         Expanded(
           child:
-              Text(UserController.userData!.displayName!, style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(UserController.userData!.displayName!,
+              style: const TextStyle(fontWeight: FontWeight.bold)),
         ),
         _buildRatingStars(widget.rating!),
       ],
@@ -127,15 +120,15 @@ class _PostScreenState extends State<PostScreen> {
   }
 
   Widget _buildFlightInfoChips() {
-    return  Wrap(
+    return Wrap(
       spacing: 8,
       children: [
-        Chip(label: Text(widget.departureCode ??'')),
+        Chip(label: Text(widget.departureCode ?? '')),
         Chip(label: Text(widget.airlineCountry ?? '')),
         Chip(label: Text(widget.travelClass ?? '')),
         Chip(
           label: Text(
-            DateFormat('MMM yyyy').format(widget.travelDate! ),
+            DateFormat('MMM yyyy').format(widget.travelDate!),
           ),
         ),
       ],
@@ -189,7 +182,6 @@ class _PostScreenState extends State<PostScreen> {
       ],
     );
   }
-
 
 
   void _sharePost() {
@@ -265,10 +257,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
   //====================================like + comment count end ====================
 
 
-
-
-
- //===============================Image method=================================================
+  //===============================Image method=================================================
 
 // For Firebase
 /*
@@ -755,16 +744,17 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => ImageGalleryScreen(
-          imageFiles: widget.imageFiles,
-          initialIndex: initialIndex,
-        ),
+        builder: (context) =>
+            ImageGalleryScreen(
+              imageFiles: widget.imageFiles,
+              initialIndex: initialIndex,
+            ),
       ),
     );
   }
 
 
-  //===================================image method end==================================================
+//===================================image method end==================================================
 
 }
 

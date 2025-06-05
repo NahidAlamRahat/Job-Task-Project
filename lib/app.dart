@@ -9,16 +9,19 @@ import 'package:month_year_picker/month_year_picker.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 
 
-
 class DeveloperLook extends StatelessWidget {
-   DeveloperLook({super.key});
-   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
+  DeveloperLook({super.key});
+
+  static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<
+      NavigatorState>();
 
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
       navigatorKey: navigatorKey,
-      initialRoute: UserController.userData != null ?  HomeScreen.name :  SignInScreen.name,
+      initialRoute: UserController.userData != null
+          ? HomeScreen.name
+          : SignInScreen.name,
       onGenerateRoute: (RouteSettings settings) {
         // Remove 'late' and provide a default route
         Widget route;
@@ -52,25 +55,23 @@ class DeveloperLook extends StatelessWidget {
               child: Text('Route not found'),
             ),
           );
-
         }
 
         return MaterialPageRoute(builder: (context) => route);
       },
 
 
-
       localizationsDelegates: const [
         GlobalMaterialLocalizations.delegate,
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
-        MonthYearPickerLocalizations.delegate, // ✅ Required for month_year_picker
+        MonthYearPickerLocalizations.delegate,
+        // ✅ Required for month_year_picker
       ],
       supportedLocales: const [
         Locale('en', ''), // ✅ Add the locales you want
         // Add more if needed like Locale('bn', '') for Bangla
       ],
-
 
 
     );

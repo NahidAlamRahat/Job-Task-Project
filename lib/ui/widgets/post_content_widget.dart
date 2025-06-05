@@ -25,7 +25,11 @@ class _PostContentWidgetState extends State<PostContentWidget> {
       text: textSpan,
       maxLines: _maxLines,
       textDirection: TextDirection.ltr,
-    )..layout(maxWidth: MediaQuery.of(context).size.width);
+    )
+      ..layout(maxWidth: MediaQuery
+          .of(context)
+          .size
+          .width);
 
     final isOverflowing = textPainter.didExceedMaxLines;
 

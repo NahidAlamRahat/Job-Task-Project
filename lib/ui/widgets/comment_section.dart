@@ -4,6 +4,7 @@ import 'package:job_task/ui/screen/auth_screen.dart';
 
 class CommentSection extends StatefulWidget {
   final String postId;
+
   const CommentSection({super.key, required this.postId});
 
   @override
@@ -16,7 +17,9 @@ class _CommentSectionState extends State<CommentSection> {
   String? replyingToCommentId;
 
   Future<void> addComment(String text, String user) async {
-    if (text.trim().isEmpty) return;
+    if (text
+        .trim()
+        .isEmpty) return;
     await FirebaseFirestore.instance
         .collection('posts')
         .doc(widget.postId)
@@ -31,7 +34,9 @@ class _CommentSectionState extends State<CommentSection> {
   }
 
   Future<void> addReply(String commentId, String text, String user) async {
-    if (text.trim().isEmpty) return;
+    if (text
+        .trim()
+        .isEmpty) return;
     await FirebaseFirestore.instance
         .collection('posts')
         .doc(widget.postId)
@@ -54,13 +59,20 @@ class _CommentSectionState extends State<CommentSection> {
       children: [
         Expanded(
           child: TextField(
-            controller: replyingToCommentId == null ? _commentController : _replyController,
+            controller: replyingToCommentId == null
+                ? _commentController
+                : _replyController,
             decoration: InputDecoration(
-              hintText: replyingToCommentId == null ? 'Write a comment...' : 'Write a reply...',
+              hintText: replyingToCommentId == null
+                  ? 'Write a comment...'
+                  : 'Write a reply...',
               filled: true,
               fillColor: Colors.grey[200],
-              border: OutlineInputBorder(borderRadius: BorderRadius.circular(30), borderSide: BorderSide.none),
-              contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(30),
+                  borderSide: BorderSide.none),
+              contentPadding: const EdgeInsets.symmetric(
+                  horizontal: 16, vertical: 10),
             ),
           ),
         ),
@@ -68,9 +80,11 @@ class _CommentSectionState extends State<CommentSection> {
           icon: const Icon(Icons.send),
           onPressed: () {
             if (replyingToCommentId == null) {
-              addComment(_commentController.text, UserController.userData!.displayName!);
+              addComment(_commentController.text,
+                  UserController.userData!.displayName!);
             } else {
-              addReply(replyingToCommentId!, _replyController.text, UserController.userData!.displayName!);
+              addReply(replyingToCommentId!, _replyController.text,
+                  UserController.userData!.displayName!);
             }
           },
         ),
@@ -113,7 +127,8 @@ class _CommentSectionState extends State<CommentSection> {
           .orderBy('timestamp')
           .snapshots(),
       builder: (context, snapshot) {
-        if (!snapshot.hasData) return const Center(child: CircularProgressIndicator());
+        if (!snapshot.hasData)
+          return const Center(child: CircularProgressIndicator());
         final comments = snapshot.data!.docs;
         return ListView.builder(
           itemCount: comments.length,
