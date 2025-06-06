@@ -22,7 +22,7 @@ class PostScreen extends StatefulWidget {
   final double? rating;
   final String? message;
   final String? postId;
-  final List<XFile> imageFiles;
+  final List<XFile>? imageFiles;
 
   const PostScreen({
     super.key,
@@ -34,7 +34,7 @@ class PostScreen extends StatefulWidget {
     this.rating,
     this.message,
     this.postId,
-    required this.imageFiles,
+     this.imageFiles,
   });
 
   @override
@@ -199,13 +199,13 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
 ''';
 
     // If there are images, share them too
-    if (widget.imageFiles.isNotEmpty) {
+    if (widget.imageFiles!.isNotEmpty) {
       // Convert XFiles to Files and get their paths
-      final imagePaths = widget.imageFiles.map((xfile) => xfile.path).toList();
+      final imagePaths = widget.imageFiles?.map((xfile) => xfile.path).toList();
 
       Share.shareXFiles(
 
-        imagePaths.map((path) => XFile(path)).toList(),
+        imagePaths!.map((path) => XFile(path)).toList(),
         text: message,
         subject: 'Flight Experience Shared',
       );
@@ -508,7 +508,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
       context,
       MaterialPageRoute(
         builder: (context) => ImageGalleryScreen(
-          imageUrls: widget.imageUrls, // প্যারামিটার নাম পরিবর্তন
+          imageUrls: widget.imageUrls,
           initialIndex: initialIndex,
         ),
       ),
@@ -519,12 +519,12 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
 
   //manual
   Widget _buildPostImage() {
-    if (widget.imageFiles.isEmpty) return Container();
+    if (widget.imageFiles!.isEmpty) return Container();
 
     return Column(
       children: [
         // 1 Image
-        if (widget.imageFiles.length == 1)
+        if (widget.imageFiles?.length == 1)
           GestureDetector(
             onTap: () => _openImageGallery(0),
             child: AspectRatio(
@@ -532,7 +532,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.file(
-                  File(widget.imageFiles[0].path),
+                  File(widget.imageFiles![0].path),
                   fit: BoxFit.cover,
                 ),
               ),
@@ -540,7 +540,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
           ),
 
         // 2 Images
-        if (widget.imageFiles.length == 2)
+        if (widget.imageFiles?.length == 2)
           Row(
             children: [
               Expanded(
@@ -551,7 +551,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.file(
-                        File(widget.imageFiles[0].path),
+                        File(widget.imageFiles![0].path),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -566,7 +566,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.file(
-                        File(widget.imageFiles[1].path),
+                        File(widget.imageFiles![1].path),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -577,7 +577,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
           ),
 
         // 3 Images
-        if (widget.imageFiles.length == 3)
+        if (widget.imageFiles?.length == 3)
           Row(
             children: [
               Expanded(
@@ -589,7 +589,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(12),
                       child: Image.file(
-                        File(widget.imageFiles[0].path),
+                        File(widget.imageFiles![0].path),
                         fit: BoxFit.cover,
                       ),
                     ),
@@ -608,7 +608,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Image.file(
-                            File(widget.imageFiles[1].path),
+                            File(widget.imageFiles![1].path),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -622,7 +622,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                         child: ClipRRect(
                           borderRadius: BorderRadius.circular(12),
                           child: Image.file(
-                            File(widget.imageFiles[2].path),
+                            File(widget.imageFiles![2].path),
                             fit: BoxFit.cover,
                           ),
                         ),
@@ -635,7 +635,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
           ),
 
         // 4 Images
-        if (widget.imageFiles.length == 4)
+        if (widget.imageFiles?.length == 4)
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
@@ -651,7 +651,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                 child: ClipRRect(
                   borderRadius: BorderRadius.circular(8),
                   child: Image.file(
-                    File(widget.imageFiles[index].path),
+                    File(widget.imageFiles![index].path),
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -660,7 +660,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
           ),
 
         // 5+ Images
-        if (widget.imageFiles.length >= 5)
+        if (widget.imageFiles!.length >= 5)
           Column(
             children: [
               Row(
@@ -676,7 +676,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                             child: AspectRatio(
                               aspectRatio: 1,
                               child: Image.file(
-                                File(widget.imageFiles[i].path),
+                                File(widget.imageFiles![i].path),
                                 fit: BoxFit.cover,
                               ),
                             ),
@@ -690,7 +690,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
               Row(
                 children: List.generate(3, (index) {
                   int imgIndex = index + 2;
-                  bool isLast = imgIndex == 4 && widget.imageFiles.length > 5;
+                  bool isLast = imgIndex == 4 && widget.imageFiles!.length > 5;
 
                   return Expanded(
                     child: Padding(
@@ -705,7 +705,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                               fit: StackFit.expand,
                               children: [
                                 Image.file(
-                                  File(widget.imageFiles[imgIndex].path),
+                                  File(widget.imageFiles![imgIndex].path),
                                   fit: BoxFit.cover,
                                 ),
                                 if (isLast)
@@ -716,7 +716,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
                                     ),
                                     alignment: Alignment.center,
                                     child: Text(
-                                      '+${widget.imageFiles.length - 5}',
+                                      '+${widget.imageFiles!.length - 5}',
                                       style: const TextStyle(
                                         color: Colors.white,
                                         fontSize: 24,
@@ -746,7 +746,7 @@ ${widget.message!.isNotEmpty ? widget.message : ''}
       MaterialPageRoute(
         builder: (context) =>
             ImageGalleryScreen(
-              imageFiles: widget.imageFiles,
+              imageFiles: widget.imageFiles!,
               initialIndex: initialIndex,
             ),
       ),

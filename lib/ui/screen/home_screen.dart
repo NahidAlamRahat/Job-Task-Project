@@ -1,56 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:cached_network_image/cached_network_image.dart'; // নতুন ইম্পোর্ট যোগ করা হয়েছে
-import 'package:image_picker/image_picker.dart';
 import 'package:job_task/ui/screen/post_screen.dart';
 import 'package:job_task/ui/screen/share_experience_screen.dart';
 import '../../utils/assets_path.dart';
 import '../widgets/drawer_menu.dart';
-import '../widgets/show_custom_alert_dialog.dart';
 import 'auth_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   static String name = 'airline-review-screen';
-
-  //
-  // final String departureCode;
-  // final String arrivalCode;
-  // final String airlineCountry;
-  // final String travelClass;
-  // final DateTime travelDate;
-  // final double rating;
-  // final String message;
-  // final String? postId;
-  // // final List<String> imageUrls;
-  final List<XFile> imageFiles;
-
-  //
-  //
-  const HomeScreen({
-    //   super.key,
-    //   required this.departureCode,
-    //   required this.arrivalCode,
-    //   required this.airlineCountry,
-    //   required this.travelClass,
-    //   required this.travelDate,
-    //   required this.rating,
-    //   required this.message,
-    //   // required this.imageUrls,
-    //   this.postId,
-    required this.imageFiles,
-    //
-  });
-
-  //
-  // bool get hasPost =>
-  //     departureCode != null &&
-  //         arrivalCode != null &&
-  //         airlineCountry != null &&
-  //         travelClass != null &&
-  //         travelDate != null &&
-  //         rating != null &&
-  //         message != null &&
-  //         imageFiles.isNotEmpty;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -204,8 +161,7 @@ class _HomeScreenState extends State<HomeScreen> {
               travelDate: travelDate,
               rating: (data['rating'] ?? 0.0).toDouble(),
               message: data['message']?.toString() ?? '',
-              postId: doc.id,
-              imageFiles: widget.imageFiles,
+              postId: doc.id, imageFiles: [],
             );
           },
         );
